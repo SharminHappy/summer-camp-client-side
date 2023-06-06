@@ -3,6 +3,8 @@ import {
   } from "react-router-dom";
 import Main from "../LayOut/Main";
 import Home from "../Pages/Home/Home/Home";
+import Instructors from "../Pages/Instructors/Instructors";
+import Login from "../Pages/Login/Login";
 
 
 
@@ -14,6 +16,14 @@ import Home from "../Pages/Home/Home/Home";
         {
             path:'/',
             element:<Home></Home>
+        },
+        {
+            path:'instructors',
+            element:<Instructors></Instructors>
+        },
+        {
+          path:'login',
+          element:<Login></Login>
         }
       ]
     },
