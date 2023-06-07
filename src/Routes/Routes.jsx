@@ -6,6 +6,8 @@ import Home from "../Pages/Home/Home/Home";
 import Instructors from "../Pages/Instructors/Instructors";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
+import PrivateRoute from "./PrivateRoute";
+import Secret from "../Pages/Secret";
 
 
 
@@ -20,7 +22,7 @@ import Registration from "../Pages/Registration/Registration";
         },
         {
             path:'instructors',
-            element:<Instructors></Instructors>
+            element:<PrivateRoute><Instructors></Instructors></PrivateRoute>
         },
         {
           path:'login',
@@ -29,7 +31,8 @@ import Registration from "../Pages/Registration/Registration";
         {
           path:'registration',
           element:<Registration></Registration>
-        }
+        },
+        
       ]
     },
   ]);
