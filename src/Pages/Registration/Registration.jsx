@@ -1,29 +1,31 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import { getAuth, updateProfile } from "firebase/auth";
-import app from "../../firebase/firebase.config";
+import Swal from "sweetalert2";
+
 
 
 
 
 const Registration = () => {
 
-    const { createUser } = useContext(AuthContext);
-    const [error, setError] = useState('');
-
-    const auth = getAuth(app);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate=useNavigate();
 
 
-    const { register, handleSubmit, getValues, formState: { errors } } = useForm();
+
+
+
+    const { register, handleSubmit, getValues, reset, formState: { errors } } = useForm();
 
 
 
     const [passwordToggle, setPasswordToggle] = useState(false);
     const [confirmToggle, setConfirmToggle] = useState(false);
+
 
 
 
@@ -35,22 +37,27 @@ const Registration = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
-                updateUserProfile(result.user,loggedUser.name,loggedUser.photo)
-            })
-        const updateUserProfile = (user, name, photo) => {
-            updateProfile(auth, user, {
-                displayName: name,
-                photoURL: photo
-            })
-                .then(() => {
-                    console.log('user profile updated')
-                })
-                .catch(error => {
-                    setError(error.message)
-                })
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        console.log('user profile updated')
+                        reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'User Profile Updated',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate('/');
 
-        }
-    };
+                    })
+                    .catch(error => console.log(error))
+            })
+
+
+    }
+
+
 
 
 
@@ -106,10 +113,9 @@ const Registration = () => {
                                 <label className="label">
                                     <span className="label-text text-cyan-950 font-semibold ">Photo URL</span>
                                 </label>
-                                <input type='text' {...register("photo")} name='photo' placeholder="Photo URL" className="input input-bordered  hover:border-cyan-950 border-b-4"></input>
+                                <input type='text' {...register("photoURL")} placeholder="Photo URL" className="input input-bordered  hover:border-cyan-950 border-b-4"></input>
                             </div>
                             <div className="form-control mt-6">
-
                                 <input className="btn bg-cyan-950 text-white hover:text-cyan-950" type="submit" value="Registration" />
                             </div>
                         </form>
@@ -120,6 +126,9 @@ const Registration = () => {
             </div>
         </div>
     );
-};
+}
+
+
+
 
 export default Registration;

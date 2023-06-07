@@ -7,7 +7,7 @@ import Instructors from "../Pages/Instructors/Instructors";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import PrivateRoute from "./PrivateRoute";
-import Secret from "../Pages/Secret";
+
 
 
 

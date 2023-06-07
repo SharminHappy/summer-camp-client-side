@@ -28,10 +28,21 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
-        
+
         {
-            user?.email && <li><Link to='/dashboard'>dashboard</Link></li>
+            user ?
+                <>
+                    <li><Link to='/dashboard' className=" me-44 ">dashboard</Link></li>
+                    <img src={user.photoURL} className="img-responsive w-12 rounded-full mr-10 " alt="" />
+                    <li><button onClick={handleLogOut} className="btn pt-4">Logout</button></li>
+                </>
+                :
+                <>
+                    <li><Link className="btn pt-4 ms-48 " to='/login'>Login</Link></li>
+                </>
         }
+
+
 
     </>
     return (
@@ -52,14 +63,7 @@ const Navbar = () => {
                     {navOptions}
                 </ul>
             </div>
-            <div className="navbar-end">
-                {
-                    user ?
-                        <> <button onClick={handleLogOut} className="btn">Logout</button></>
-                        : <> <Link className="btn" to='/login'>Login</Link></>
-                }
 
-            </div>
         </div>
     );
 };

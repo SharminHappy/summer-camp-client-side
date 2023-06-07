@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
@@ -10,6 +10,10 @@ const Login = () => {
 
     const { signIn } = useContext(AuthContext);
     const [passwordShown, setPasswordShown] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
 
 
 
@@ -29,7 +33,9 @@ const Login = () => {
                     title: 'User Login Successfully',
                     showConfirmButton: false,
                     timer: 1500
-                  })
+                });
+                navigate(from, { replace: true });
+
             })
     }
 
@@ -63,14 +69,14 @@ const Login = () => {
                                 </label>
                                 <input type={passwordShown ? "text" : "password"} name="password" placeholder=" Type Password" className="input input-bordered  hover:border-cyan-950 border-b-4"></input>
                                 <div className="input-group-btn mx-auto">
-                                    <button  onClick={togglePassword}>
-                                    {
-                                        passwordShown == 'password' ? <FaEye className=" absolute -translate-y-12 translate-x-32"></FaEye> :
-                                            <FaEyeSlash className=" absolute -translate-y-12 translate-x-32"></FaEyeSlash>
+                                    <button onClick={togglePassword}>
+                                        {
+                                            passwordShown == 'password' ? <FaEye className=" absolute -translate-y-12 translate-x-32"></FaEye> :
+                                                <FaEyeSlash className=" absolute -translate-y-12 translate-x-32"></FaEyeSlash>
 
-                                    }
+                                        }
 
-                                </button></div>
+                                    </button></div>
 
                             </div>
                             <div className="form-control mt-6">
@@ -78,7 +84,7 @@ const Login = () => {
                                 <input className="btn bg-cyan-950 text-white hover:text-cyan-950" type="submit" value="Login" />
                             </div>
                         </form>
-                        
+
                         <p className=" mx-auto mb-10"><small>Does not have a account yet?<Link to='/registration' className=" text-cyan-950 font-bold ">Registration</Link></small></p>
                     </div>
                 </div>
