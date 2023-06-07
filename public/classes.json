@@ -1,0 +1,66 @@
+[
+    {
+        "_id": 1,
+        "image": "https://i.ibb.co/0s7zLFd/close-up-kids-playing-basketball-23-2149214016.jpg",
+        "class_name": "Basketball",
+        "instructor_name": "John Smith",
+        "about":"It is a fast-paced sport played between two teams. To score points, players shoot a ball through high hoops, which are located at either end of the court. Players move the ball around the court by throwing, or passing, it to a teammate.",
+        "available_seats": 20,
+        "price": 100,
+        "enrollment": 15
+    },
+    {
+        "_id": 2,
+        "image": "https://i.ibb.co/vm6jgSd/front-view-football-trainer-teaching-kids-field-23-2149742029.jpg",
+        "class_name": "Soccer",
+        "instructor_name": "Emma Johnson",
+        "available_seats": 15,
+        "price": 80,
+        "enrollment": 10
+    },
+    {
+        "_id": 3,
+        "image": "https://i.ibb.co/K57bgy6/group-boys-girls-train-learn-swim-pool-with-instructor-199620-11812.jpg",
+        "class_name": "Swimming",
+        "instructor_name": "Michael Brown",
+        "available_seats": 12,
+        "price": 120,
+        "enrollment": 8
+    },
+    {
+        "_id": 4,
+        "image": "https://i.ibb.co/jvdcW36/tennis-is-fun-when-father-is-near-cheerful-father-sports-clothing-teaching-his-daughter-play-tennis.jpg",
+        "class_name": "Tennis",
+        "instructor_name": "Sarah Davis",
+        "available_seats": 10,
+        "price": 150,
+        "enrollment": 5
+    },
+    {
+        "_id": 5,
+        "image": "https://i.ibb.co/9V72PPP/medium-shot-sporty-kids-gym-23-2149351795.jpg",
+        "class_name": "Volleyball",
+        "instructor_name": "Robert Wilson",
+        "available_seats": 18,
+        "price": 90,
+        "enrollment": 12
+    },
+    {
+        "_id": 6,
+        "image": "https://i.ibb.co/BZDZY8r/kids-cricket-girl-bowling-sporting-blog.jpg",
+        "class_name": "Cricket",
+        "instructor_name": "Robert Wilson",
+        "available_seats": 5,
+        "price": 90,
+        "enrollment": 20
+    },
+    {
+        "_id": 7,
+        "image": "https://i.ibb.co/XzRy1zB/side-view-kids-playing-kickball-23-2149457290.jpg",
+        "class_name": "Kickball",
+        "instructor_name": "Robert Wilson",
+        "available_seats": 20,
+        "price": 90,
+        "enrollment": 5
+    }
+]

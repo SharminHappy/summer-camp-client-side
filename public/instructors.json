@@ -1,0 +1,114 @@
+[
+    {
+        "_id": 1,
+        "image": "path/to/image1.jpg",
+        "instructorName": "John Doe",
+        "numberOfClassesTaken": 5,
+        "classes": [
+            {
+                "className": "Basketball",
+                "numberOfStudents": 15
+            },
+            {
+                "className": "Soccer",
+                "numberOfStudents": 20
+            }
+        ]
+    },
+    {
+        "_id": 2,
+        "image": "path/to/image2.jpg",
+        "instructorName": "Jane Smith",
+        "numberOfClassesTaken": 3,
+        "classes": [
+            {
+                "className": "Tennis",
+                "numberOfStudents": 10
+            },
+            {
+                "className": "Swimming",
+                "numberOfStudents": 12
+            }
+        ]
+    },
+    {
+        "_id": 3,
+        "image": "path/to/image3.jpg",
+        "instructorName": "Michael Johnson",
+        "numberOfClassesTaken": 7,
+        "classes": [
+            {
+                "className": "Kickball",
+                "numberOfStudents": 18
+            },
+            {
+                "className": "Football",
+                "numberOfStudents": 25
+            }
+        ]
+    },
+    {
+        "_id": 4,
+        "image": "path/to/image4.jpg",
+        "instructorName": "Emily Brown",
+        "numberOfClassesTaken": 2,
+        "classes": [
+            {
+                "className": "Football",
+                "numberOfStudents": 8
+            },
+            {
+                "className": "Basketball",
+                "numberOfStudents": 15
+            }
+        ]
+    },
+    {
+        "_id": 5,
+        "image": "path/to/image5.jpg",
+        "instructorName": "David Wilson",
+        "numberOfClassesTaken": 4,
+        "classes": [
+            {
+                "className": "Volleyball",
+                "numberOfStudents": 12
+            },
+            {
+                "className": "Badminton",
+                "numberOfStudents": 10
+            }
+        ]
+    },
+    {
+        "_id": 6,
+        "image": "path/to/image6.jpg",
+        "instructorName": "Sophia Davis",
+        "numberOfClassesTaken": 6,
+        "classes": [
+            {
+                "className": "Soccer",
+                "numberOfStudents": 10
+            },
+            {
+                "className": "cricket",
+                "numberOfStudents": 15
+            }
+        ]
+    },
+    {
+        "_id": 7,
+        "image": "path/to/image7.jpg",
+        "instructorName": "Daniel Thompson",
+        "numberOfClassesTaken": 9,
+        "classes": [
+            {
+                "className": "Baseball",
+                "numberOfStudents": 20
+            },
+            {
+                "className": "Golf",
+                "numberOfStudents": 8
+            }
+        ]
+    }
+]
