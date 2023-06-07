@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -21,6 +23,13 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'User Login Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             })
     }
 
@@ -40,19 +49,19 @@ const Login = () => {
             </Helmet>
             <div className="hero min-h-screen bg-base-200 ">
                 <div className="hero-content  w-full ">
-                    <div className="card w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card w-full max-w-sm shadow-2xl bg-base-100 my-20">
                         <form onSubmit={handleLogin} className="card-body">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text text-cyan-950 font-semibold">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" name="email" className="input input-bordered" />
+                                <input type="email" placeholder="Enter Your Email" name="email" className="input input-bordered  hover:border-cyan-950 border-b-4" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text text-cyan-950 font-semibold">Password</span>
                                 </label>
-                                <input type={passwordShown ? "text" : "password"} name="password" placeholder="password" className="input input-bordered"></input>
+                                <input type={passwordShown ? "text" : "password"} name="password" placeholder=" Type Password" className="input input-bordered  hover:border-cyan-950 border-b-4"></input>
                                 <div className="input-group-btn mx-auto">
                                     <button  onClick={togglePassword}>
                                     {
@@ -66,9 +75,11 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6">
 
-                                <input className="btn btn-primary" type="submit" value="Login" />
+                                <input className="btn bg-cyan-950 text-white hover:text-cyan-950" type="submit" value="Login" />
                             </div>
                         </form>
+                        
+                        <p className=" mx-auto mb-10"><small>Does not have a account yet?<Link to='/registration' className=" text-cyan-950 font-bold ">Registration</Link></small></p>
                     </div>
                 </div>
             </div>
