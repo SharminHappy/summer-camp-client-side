@@ -28,6 +28,14 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
+        <li>
+            <Link to='/'>
+                <button className="btn gap-2">
+                    Inbox
+                    <div className="badge badge-secondary">+99</div>
+                </button>
+            </Link>
+        </li>
 
         {
             user ?
