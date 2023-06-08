@@ -1,6 +1,6 @@
 [
     {
-        "_id": 1,
+        "_id":"60bb785f56a2781e78b7f4a1",
         "image": "https://i.ibb.co/0s7zLFd/close-up-kids-playing-basketball-23-2149214016.jpg",
         "class_name": "Basketball",
         "instructor_name": "John Smith",
@@ -10,7 +10,7 @@
         "enrollment": 15
     },
     {
-        "_id": 2,
+        "_id": "60bb785f56a2781e78b7f4a2",
         "image": "https://i.ibb.co/vm6jgSd/front-view-football-trainer-teaching-kids-field-23-2149742029.jpg",
         "class_name": "Soccer",
         "instructor_name": "Emma Johnson",
@@ -19,7 +19,7 @@
         "enrollment": 10
     },
     {
-        "_id": 3,
+        "_id":"60bb785f56a2781e78b7f4a3",
         "image": "https://i.ibb.co/K57bgy6/group-boys-girls-train-learn-swim-pool-with-instructor-199620-11812.jpg",
         "class_name": "Swimming",
         "instructor_name": "Michael Brown",
@@ -28,7 +28,7 @@
         "enrollment": 8
     },
     {
-        "_id": 4,
+        "_id": "60bb785f56a2781e78b7f4a4",
         "image": "https://i.ibb.co/jvdcW36/tennis-is-fun-when-father-is-near-cheerful-father-sports-clothing-teaching-his-daughter-play-tennis.jpg",
         "class_name": "Tennis",
         "instructor_name": "Sarah Davis",
@@ -37,7 +37,7 @@
         "enrollment": 5
     },
     {
-        "_id": 5,
+        "_id": "60bb785f56a2781e78b7f4a5",
         "image": "https://i.ibb.co/9V72PPP/medium-shot-sporty-kids-gym-23-2149351795.jpg",
         "class_name": "Volleyball",
         "instructor_name": "Robert Wilson",
@@ -46,7 +46,7 @@
         "enrollment": 12
     },
     {
-        "_id": 6,
+        "_id": "60bb785f56a2781e78b7f4a6",
         "image": "https://i.ibb.co/BZDZY8r/kids-cricket-girl-bowling-sporting-blog.jpg",
         "class_name": "Cricket",
         "instructor_name": "Robert Wilson",
@@ -55,7 +55,7 @@
         "enrollment": 20
     },
     {
-        "_id": 7,
+        "_id": "60bb785f56a2781e78b7f4a7",
         "image": "https://i.ibb.co/XzRy1zB/side-view-kids-playing-kickball-23-2149457290.jpg",
         "class_name": "Kickball",
         "instructor_name": "Robert Wilson",
