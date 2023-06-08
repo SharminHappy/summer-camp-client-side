@@ -20,7 +20,7 @@ const PopularClasses = () => {
             heading={'Popular Classes'}
             >
             </SectionTitle>
-            <div className="grid grid-cols-3 gap-3 ">
+            <div className="grid lg:grid-cols-3 justify-center items-center gap-3 ">
                 {
                     pClasses.map(pClass=><PopularClassCard
                     key={pClass._id}

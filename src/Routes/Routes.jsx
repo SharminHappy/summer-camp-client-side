@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'classes',
-        element: <PrivateRoute><Classes></Classes></PrivateRoute>,
+        element: <Classes></Classes>,
         loader: async () => {
           try {
             const response = await fetch('http://localhost:5000/classes');

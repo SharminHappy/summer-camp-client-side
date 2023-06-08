@@ -23,6 +23,7 @@ const AllInstructorsCard = ({ data }) => {
     }
     return (
         <>
+
             <section>
                 <div className="card w-96 bg-base-100 shadow-xl">
                     <figure className="px-10 pt-10">
@@ -39,7 +40,7 @@ const AllInstructorsCard = ({ data }) => {
                 </div>
             </section>
             {
-                modal === true ? <Modal image={tempdata[1]} instructorName={tempdata[2]} /> : ''
+                modal === true ? <Modal image={tempdata[1]} instructorName={tempdata[2]}  /> : ''
             }
 
         </>

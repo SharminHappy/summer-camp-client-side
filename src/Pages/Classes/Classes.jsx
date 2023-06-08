@@ -3,6 +3,8 @@ import { useLoaderData } from "react-router-dom";
 import ClassesCard from "./ClassesCard";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 
+// Todo:impement pagination here
+
 const Classes = () => {
     const loadedClaData = useLoaderData();
 

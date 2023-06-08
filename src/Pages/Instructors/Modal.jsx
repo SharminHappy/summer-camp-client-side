@@ -1,8 +1,8 @@
-import { render } from "react-dom";
 
 
 
-const Modal = () => {
+
+const Modal = ({props}) => {
    
 
     // if (!showModal) {
