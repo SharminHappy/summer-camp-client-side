@@ -5,9 +5,13 @@ import { NavLink, Outlet } from "react-router-dom";
 
 import { useState } from 'react';
 import { FaAddressBook, FaCaretLeft, FaFootballBall, FaHome, FaWallet } from "react-icons/fa";
+import useSelect from "../hooks/useSelect";
 
 const Dashboard = () => {
+
+    const [select] = useSelect();
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
 
     const toggleDrawer = () => {
         setIsDrawerOpen(!isDrawerOpen);
@@ -23,13 +27,18 @@ const Dashboard = () => {
 
                 <a className="btn btn-ghost normal-case text-xl ml-8  pt-5"><span className='font-bold text-cyan-950 text-4xl uppercase'>sps</span><span className='font-bold text-4xl text-yellow-700 uppercase '>c<span className=' font-bold text-cyan-950 text-4xl uppercase'>@</span>mp</span></a>
                 <ul className="menu p-4   my-5 text-white uppercase gap-3 justify-center">
-                    <li className=" w-56 ml-4 "><NavLink to='/dashboard/home'><FaHome></FaHome> User Home</NavLink></li>
-                    <li className="w-56 ml-4 "><NavLink to='/dashboard/myselectedclasses'><FaFootballBall></FaFootballBall>my selected classes</NavLink></li>
-                    <li className="w-56 ml-4 "><NavLink to='/dashboard/enroll'><FaAddressBook></FaAddressBook> my Enrolled classes</NavLink></li>
-                    <li className="w-56 ml-4"><NavLink to='/dashboard/history'><FaWallet></FaWallet>Payment history</NavLink></li>
+                    <li className=" w-64 ml-4 "><NavLink to='/dashboard/home'><FaHome></FaHome> User Home</NavLink></li>
+                    <li className="w-64 ml-4 ">
+                        <NavLink to='/dashboard/myselectedclasses'><FaFootballBall></FaFootballBall>my selected classes
+                            <span className="badge  bg-yellow-500  text-white ">+{select?.length || 0}</span>
+                        </NavLink>
+
+                    </li>
+                    <li className="w-64 ml-4 "><NavLink to='/dashboard/enroll'><FaAddressBook></FaAddressBook> my Enrolled classes</NavLink></li>
+                    <li className="w-64 ml-4"><NavLink to='/dashboard/history'><FaWallet></FaWallet>Payment history</NavLink></li>
                     <div className="divider h-1 w-60 ml-2 rounded-lg  bg-yellow-500"></div>
-                    <li className=" w-56 ml-4 "><NavLink to='/'><FaHome></FaHome>Home</NavLink></li>
-                    <li className=" w-56 ml-4 "><NavLink to='/classes'><FaFootballBall></FaFootballBall>classes</NavLink></li>
+                    <li className=" w-64 ml-4 "><NavLink to='/'><FaHome></FaHome>Home</NavLink></li>
+                    <li className=" w-64 ml-4 "><NavLink to='/classes'><FaFootballBall></FaFootballBall>classes</NavLink></li>
 
                 </ul>
             </div>
@@ -39,7 +48,7 @@ const Dashboard = () => {
             <div className="flex-1">
                 <Outlet></Outlet>
                 <button
-                    className="fixed left-0 top-0  p-0 w-5 h-full bg-gray-800  text-white"
+                    className="fixed left-0 top-0  p-0  h-full bg-gray-800  text-white"
                     onClick={toggleDrawer}
                 >
                     <FaCaretLeft className=" ml-0 mt-7"></FaCaretLeft>
