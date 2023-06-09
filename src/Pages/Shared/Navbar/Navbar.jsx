@@ -2,11 +2,14 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { FaShoppingCart } from 'react-icons/fa';
+import useSelect from "../../../hooks/useSelect";
 
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
+
+    const [select]=useSelect();
 
     const handleLogOut = () => {
 
@@ -24,10 +27,10 @@ const Navbar = () => {
         <li><Link className=" w-28" to='/instructors'>Instructors</Link></li>
         <li><Link className=" w-28" to='/classes'>Classes</Link></li>
         <li>
-            <Link  className=" w-28" to='/'>
+            <Link  className=" w-28" to='/dashboard/myselectedclasses'>
                 <button className="flex  h-10 gap-2">
                     <FaShoppingCart className="text-xl "></FaShoppingCart>
-                    <div className="badge bg-yellow-500 h-4">+0</div>
+                    <div className="badge bg-yellow-500 p-2 text-white h-4">+{select?.length || 0}</div>
                 </button>
             </Link>
         </li>
@@ -35,7 +38,6 @@ const Navbar = () => {
         {
             user ?
                 <>
-                    <li><Link to='/dashboard' className=" w-28 mr-20 ">dashboard</Link></li>
                     <img src={user.photoURL} className="img-responsive w-12 rounded-full mr-10 " alt="" />
                     <li><button onClick={handleLogOut} className="btn ml-2 pt-4 w-20">Logout</button></li>
                 </>
