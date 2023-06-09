@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { Helmet } from "react-helmet-async";
-import {FaUserShield } from "react-icons/fa";
+import { FaUserShield } from "react-icons/fa";
 
 import { GrUserAdmin } from "react-icons/gr";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 
 const ManageUsers = () => {
@@ -15,15 +15,54 @@ const ManageUsers = () => {
     })
 
     const handleMakeAdmin = user => {
-       
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH'
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `${user.name} is an Admin Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
 
     }
-    const handleMakeInstructor=(user)=>{
+    const handleMakeInstructor = user => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH'
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `${user.name} is an Instructor Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
 
     }
-  
 
-    
+
+
+
+
+
+
+
+
     return (
         <div className="w-full  ml-2">
             <Helmet>
@@ -57,10 +96,10 @@ const ManageUsers = () => {
                                     }
 
                                     {
-                                        user.role === 'instructor' ? 'instructor' : <button  onClick={() => handleMakeInstructor(user)} className="btn  btn-ghost  bg-yellow-500 btn-sm"><GrUserAdmin></GrUserAdmin></button>
+                                        user.role === 'instructor' ? 'instructor' : <button onClick={() => handleMakeInstructor(user)} className="btn  btn-ghost  bg-yellow-500 btn-sm"><GrUserAdmin></GrUserAdmin></button>
                                     }
                                 </td>
-                                
+
                             </tr>)
                         }
 
