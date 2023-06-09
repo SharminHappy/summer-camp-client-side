@@ -43,7 +43,7 @@ const MySelectedClasses = () => {
 
     return (
 
-        <div className=" w-full ">
+        <div className=" w-full  ml-2">
             <Helmet>
                 <title>SPSC@MP |My Selected Classes</title>
             </Helmet>
@@ -55,8 +55,8 @@ const MySelectedClasses = () => {
                 <h1 className="text-2xl">Total Price:{total}</h1>
                 <button className="btn btn-outline btn-warning btn-sm">pay</button>
             </div>
-            <div className="overflow-x-auto  w-full ">
-                <table className="table w-full ml-4">
+            <div className="overflow-x-auto  w-full">
+                <table className="table ">
                     {/* head */}
                     <thead>
                         <tr className=" bg-gray-800  text-white">

@@ -1,8 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
-
-
-
-
+import { LuUsers } from "react-icons/lu";
+import { MdSportsCricket } from "react-icons/md";
 import { useContext, useState } from 'react';
 import { FaAddressBook, FaCaretLeft, FaFootballBall, FaHome, FaSignOutAlt, FaWallet } from "react-icons/fa";
 import useSelect from "../hooks/useSelect";
@@ -14,6 +12,10 @@ const Dashboard = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const { logOut } = useContext(AuthContext);
 
+    // TODO:load data from the server to have dynamic isAdmin based on  data
+    const isAdmin = true;
+    // const isInstructor = true;
+    // const isUser = true;
     const handleLogOut = () => {
 
         logOut()
@@ -39,19 +41,37 @@ const Dashboard = () => {
 
                 <a className="btn btn-ghost normal-case text-xl ml-8  pt-5"><span className='font-bold text-cyan-950 text-4xl uppercase'>sps</span><span className='font-bold text-4xl text-yellow-700 uppercase '>c<span className=' font-bold text-cyan-950 text-4xl uppercase'>@</span>mp</span></a>
                 <ul className="menu p-4   my-5 text-white uppercase gap-3 justify-center">
-                    <li className=" w-64 ml-4 "><NavLink to='/dashboard/home'><FaHome></FaHome> User Home</NavLink></li>
-                    <li className="w-64 ml-4 ">
-                        <NavLink to='/dashboard/myselectedclasses'><FaFootballBall></FaFootballBall>my selected classes
-                            <span className="badge  bg-yellow-500  text-white ">+{select?.length || 0}</span>
-                        </NavLink>
+                    {
+                        isAdmin ?
+                            <>
+                                <li className=" w-64 ml-4 "><NavLink to='/dashboard/home'><FaHome></FaHome> Admin Home</NavLink></li>                            
+                                <li className="w-64 ml-4 "><NavLink to='/dashboard/manageclasses'><MdSportsCricket></MdSportsCricket>Manage Classes</NavLink></li>
+                                <li className="w-64 ml-4"><NavLink to='/dashboard/manageusers'><LuUsers></LuUsers>Manage Users</NavLink></li>
+                                <div className="divider h-1 w-60 ml-2 rounded-lg  bg-yellow-500"></div>
+                                <li className=" w-64 ml-4 "><NavLink to='/'><FaHome></FaHome>Home</NavLink></li>
+                                <li className=" w-64 ml-4 "><NavLink to='/classes'><FaFootballBall></FaFootballBall>classes</NavLink></li>
+                                <li className=" w-64 ml-4" onClick={handleLogOut} ><a ><FaSignOutAlt></FaSignOutAlt>Logout</a></li>
 
-                    </li>
-                    <li className="w-64 ml-4 "><NavLink to='/dashboard/enroll'><FaAddressBook></FaAddressBook> my Enrolled classes</NavLink></li>
-                    <li className="w-64 ml-4"><NavLink to='/dashboard/history'><FaWallet></FaWallet>Payment history</NavLink></li>
-                    <div className="divider h-1 w-60 ml-2 rounded-lg  bg-yellow-500"></div>
-                    <li className=" w-64 ml-4 "><NavLink to='/'><FaHome></FaHome>Home</NavLink></li>
-                    <li className=" w-64 ml-4 "><NavLink to='/classes'><FaFootballBall></FaFootballBall>classes</NavLink></li>
-                    <li className=" w-64 ml-4" onClick={handleLogOut} ><a ><FaSignOutAlt></FaSignOutAlt>Logout</a></li>
+                            </>
+                            :
+                            <>
+                                <li className=" w-64 ml-4 "><NavLink to='/dashboard/home'><FaHome></FaHome> User Home</NavLink></li>
+                                <li className="w-64 ml-4 ">
+                                    <NavLink to='/dashboard/myselectedclasses'><FaFootballBall></FaFootballBall>my selected classes
+                                        <span className="badge  bg-yellow-500  text-white ">+{select?.length || 0}</span>
+                                    </NavLink>
+
+                                </li>
+                                <li className="w-64 ml-4 "><NavLink to='/dashboard/enroll'><FaAddressBook></FaAddressBook> my Enrolled classes</NavLink></li>
+                                <li className="w-64 ml-4"><NavLink to='/dashboard/history'><FaWallet></FaWallet>Payment history</NavLink></li>
+                                <div className="divider h-1 w-60 ml-2 rounded-lg  bg-yellow-500"></div>
+                                <li className=" w-64 ml-4 "><NavLink to='/'><FaHome></FaHome>Home</NavLink></li>
+                                <li className=" w-64 ml-4 "><NavLink to='/classes'><FaFootballBall></FaFootballBall>classes</NavLink></li>
+                                <li className=" w-64 ml-4" onClick={handleLogOut} ><a ><FaSignOutAlt></FaSignOutAlt>Logout</a></li>
+
+                            </>
+
+                    }
 
                 </ul>
             </div>
