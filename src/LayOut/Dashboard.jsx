@@ -3,14 +3,26 @@ import { NavLink, Outlet } from "react-router-dom";
 
 
 
-import { useState } from 'react';
-import { FaAddressBook, FaCaretLeft, FaFootballBall, FaHome, FaWallet } from "react-icons/fa";
+import { useContext, useState } from 'react';
+import { FaAddressBook, FaCaretLeft, FaFootballBall, FaHome, FaSignOutAlt, FaWallet } from "react-icons/fa";
 import useSelect from "../hooks/useSelect";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Dashboard = () => {
 
     const [select] = useSelect();
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const { logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+
+        logOut()
+            .then(() => { })
+            .catch(error => {
+                console.log(error)
+            })
+
+    }
 
 
     const toggleDrawer = () => {
@@ -39,6 +51,7 @@ const Dashboard = () => {
                     <div className="divider h-1 w-60 ml-2 rounded-lg  bg-yellow-500"></div>
                     <li className=" w-64 ml-4 "><NavLink to='/'><FaHome></FaHome>Home</NavLink></li>
                     <li className=" w-64 ml-4 "><NavLink to='/classes'><FaFootballBall></FaFootballBall>classes</NavLink></li>
+                    <li className=" w-64 ml-4" onClick={handleLogOut} ><a ><FaSignOutAlt></FaSignOutAlt>Logout</a></li>
 
                 </ul>
             </div>
