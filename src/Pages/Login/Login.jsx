@@ -4,6 +4,8 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
+
 
 
 const Login = () => {
@@ -84,6 +86,8 @@ const Login = () => {
                                 <input className="btn bg-cyan-950 text-white hover:text-cyan-950" type="submit" value="Login" />
                             </div>
                         </form>
+
+                        <SocialLogin></SocialLogin>
 
                         <p className=" mx-auto mb-10"><small>Does not have a account yet?<Link to='/registration' className=" text-cyan-950 font-bold ">Registration</Link></small></p>
                     </div>

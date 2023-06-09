@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 
 
@@ -135,6 +136,7 @@ const Registration = () => {
                         </form>
 
                         <p className=" mx-auto mb-10"><small>Have an account ! <Link to='/login' className=" text-cyan-950 font-bold ">Login</Link></small></p>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
