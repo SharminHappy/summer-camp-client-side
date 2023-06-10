@@ -1,17 +1,21 @@
 import { useContext, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
+import axios from 'axios';
+
+const axiosSecure = axios.create({
+    baseURL: 'http://localhost:5000',
+});
 
 
 const useAxiosSecure = () => {
+
+
     const { logOut } = useContext(AuthContext);
+
 
     const navigate = useNavigate();
 
-    const axiosSecure = axios.create({
-        baseURL: 'http://localhost:5000',
-    });
 
     useEffect(() => {
 
@@ -20,33 +24,28 @@ const useAxiosSecure = () => {
             (config) => {
                 const accessToken = localStorage.getItem('Access_Token');
                 if (accessToken) {
-                    config.headers['Authorization'] = `Bearer ${accessToken}`;
+                    config.headers.Authorization = `Bearer ${accessToken}`;
                 }
                 return config;
             },
-            (error) => {
-                return Promise.reject(error);
-            }
+
         );
 
         axiosSecure.interceptors.response.use(
-            (response) => {
-                response;
-            },
-            async(error) => {
+            (response) => response,
+            // undefined,
+            async (error) => {
                 if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-                    await logOut()
-                        .then(() => {
-                            navigate('/login');
-                        })
-                       
+                    await logOut();
+                    navigate('/login');
+
                 }
                 return Promise.reject(error);
             }
         );
-    }, [logOut, navigate, axiosSecure]);
+    }, [logOut, navigate]);
 
-    return [axiosSecure];
+    return [axiosSecure]
 };
 
 export default useAxiosSecure;

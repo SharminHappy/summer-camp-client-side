@@ -14,7 +14,7 @@ const ClassesCard = ({ data }) => {
     const location = useLocation();
 
 
-    const handleSelect = (data) => {
+    const handleSelect = async(data) => {
         console.log(data);
 
         if (user && user.email) {

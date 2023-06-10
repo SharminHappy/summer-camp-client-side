@@ -3,8 +3,10 @@ import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import useAxiosSecure from './useAxiosSecure';
 
+
 const useSelect = () => {
-    const { user } = useContext(AuthContext);
+
+    const { user, loading } = useContext(AuthContext);
     // const token = localStorage.getItem('Access_Token');
 
     const [axiosSecure] = useAxiosSecure();
@@ -12,11 +14,12 @@ const useSelect = () => {
 
     const { refetch, data: select = [] } = useQuery({
         queryKey: ['selects', user?.email],
+        enabled: !loading && !!user?.email && !!localStorage.getItem('Access_Token'),
         queryFn: async () => {
+            const res = await axiosSecure(`/selects/?email=${user.email}`)
+            // console.log('res from axios', res)
+           return res.data;
            
-            const response = await axiosSecure(`selects/?email=${user?.email}`)
-            console.log('response from axios ', response)
-            return response.data;
         },
     })
     return [select, refetch]

@@ -1,30 +1,17 @@
 
 
-
-
-const Modal = ({props}) => {
-   
-
-    // if (!showModal) {
-    //     return null;
-    // }
-
-// TODO 
-
-
-    return (
-
-        <div className="modal" id="my-modal-2">
-            <div className="modal-box">
-               
-                <h3 className="font-bold text-lg">{this.props.instructorName}</h3>
-                <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                <div className="modal-action">
-                    <a href="#" className="btn">Yay!</a>
-                </div>
-            </div>
-        </div>
-    );
+const Modal = ({ isOpen, onClose,data }) => {
+  return (
+    // Your modal content here
+    <div className={`modal ${isOpen ? 'open' : ''}`}>
+      <div className="modal-content">
+        {/* Modal content goes here */}
+        <button className="close-button" onClick={onClose}>
+          Close
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default Modal;

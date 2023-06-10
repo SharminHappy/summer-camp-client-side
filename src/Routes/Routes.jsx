@@ -28,15 +28,7 @@ export const router = createBrowserRouter([
       {
         path: 'instructors',
         element: <PrivateRoute><Instructors></Instructors></PrivateRoute>,
-        loader: async () => {
-          try {
-            const response = await fetch('http://localhost:5000/instructors');
-            const data = await response.json();
-            return data;
-          } catch (error) {
-            console.log(error.message);
-          }
-        }
+       
       },
       {
         path: 'classes',

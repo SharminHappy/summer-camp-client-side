@@ -1,32 +1,32 @@
 import { Helmet } from 'react-helmet-async';
-import { useLoaderData } from 'react-router-dom';
 import AllInstructorsCard from './AllInstructorsCard';
 import SectionTitle from '../../Components/SectionTitle/SectionTitle';
+import { useEffect, useState } from 'react';
 
 const Instructors = () => {
 
-    const loadedInsData = useLoaderData();
 
-   
-
-   
-
+    const [cardData, setCardData] = useState([]);
+    useEffect(() => {
+        // Fetch data from the server and update the cardData state
+        fetch('http://localhost:5000/instructors')
+            .then((response) => response.json())
+            .then((data) => setCardData(data));
+    }, []);
+    
     return (
         <div>
             <Helmet>
                 <title>SPSC@MP | Instructors</title>
             </Helmet>
             <SectionTitle
-            heading={'all instructors information'}
+                heading={'all instructors information'}
             ></SectionTitle>
             <div className='grid grid-cols-3 gap-3'>
                 {
-                    loadedInsData.map(data => <AllInstructorsCard
+                    cardData.map(data => <AllInstructorsCard
                         key={data._id}
                         data={data}
-                        
-
-
                     ></AllInstructorsCard>)
                 }
             </div>
