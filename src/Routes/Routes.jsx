@@ -14,6 +14,7 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import AddClass from "../Pages/Dashboard/AddClass/AddClass";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import StudentRoute from "./StudentRoute";
 
 
 
@@ -58,7 +59,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'myselectedclasses',
-        element: <MySelectedClasses></MySelectedClasses>
+        element: <StudentRoute><MySelectedClasses></MySelectedClasses></StudentRoute>
       },
       {
         path: 'manageusers',
