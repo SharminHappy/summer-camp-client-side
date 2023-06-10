@@ -9,7 +9,7 @@ const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
 
-    const [select]=useSelect();
+    const [select] = useSelect();
 
     const handleLogOut = () => {
 
@@ -27,10 +27,19 @@ const Navbar = () => {
         <li><Link className=" w-28" to='/instructors'>Instructors</Link></li>
         <li><Link className=" w-28" to='/classes'>Classes</Link></li>
         <li>
-            <Link  className=" w-28" to='/dashboard/myselectedclasses'>
+            {/* here first had a dashboard/myselectedclasses now has a only dashboard  */}
+            <Link className=" w-28" to='/dashboard'>
                 <button className="flex  h-10 gap-2">
-                    <FaShoppingCart className="text-xl "></FaShoppingCart>
-                    <div className="badge bg-yellow-500 p-2 text-white h-4">+{select?.length || 0}</div>
+                    Dashboard
+                    {/* TODO:if student login then will be see number of time otherwish no */}
+                    {/* <div>
+                        {
+                            !user.role == "admin" || !user.role == "instructor" ?
+                                <div className="badge bg-yellow-500 p-2 text-white h-4">+{select?.length || 0}</div> :
+                                <></>
+                        }
+                    </div> */}
+
                 </button>
             </Link>
         </li>

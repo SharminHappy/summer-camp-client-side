@@ -8,6 +8,7 @@ import axios from 'axios';
 const useAxiosSecure = () => {
     const { logOut } = useContext(AuthContext);
     const navigate = useNavigate();
+
     const axiosSecure = axios.create({
         baseURL: 'http://localhost:5000',
     });
@@ -39,7 +40,7 @@ const useAxiosSecure = () => {
                 return Promise.reject(error);
             }
         );
-    }, [logOut, navigate]);
+    }, [logOut, navigate,axiosSecure]);
 
     return [axiosSecure]
 };

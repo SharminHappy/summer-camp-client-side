@@ -26,7 +26,7 @@ const Dashboard = () => {
   // const isAdmin = true;
   // const isInstructor = true;
 
- const [isStudent]=useStudent();
+  const [isStudent] = useStudent();
 
   const [isInstructor] = useInstructor();
 
@@ -34,7 +34,7 @@ const Dashboard = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch(error => {
         console.log(error);
       });
@@ -47,10 +47,10 @@ const Dashboard = () => {
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
+      {/* here i want to side bar also scroll or  move with main content */}
       <div
-        className={`w-80 bg-gray-800 text-white mb-0 pb-0 h-screen overflow-y-auto ${
-          isDrawerOpen ? 'translate-x-0' : '-translate-x-full fixed'
-        } transition-transform duration-300 ease-in-out`}
+        className={`w-80 bg-gray-800 text-white mb-0 pb-0 h-screen overflow-y-auto   ${isDrawerOpen ? 'translate-x-0 ' : '-translate-x-full fixed  '
+          } transition-transform duration-300 ease-in-out`}
       >
         <a className="btn btn-ghost normal-case text-xl ml-8  pt-5">
           <span className="font-bold text-cyan-950 text-4xl uppercase">sps</span>
@@ -93,10 +93,10 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="w-64 ml-4" onClick={handleLogOut}>
-                <a>
+              <NavLink to='/'>
                   <FaSignOutAlt />
                   Logout
-                </a>
+                </NavLink>
               </li>
             </>
           ) : isInstructor ? (
@@ -127,10 +127,10 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="w-64 ml-4" onClick={handleLogOut}>
-                <a>
+                <NavLink to='/'>
                   <FaSignOutAlt />
                   Logout
-                </a>
+                </NavLink>
               </li>
             </>
           ) : isStudent ? (
@@ -174,10 +174,10 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="w-64 ml-4" onClick={handleLogOut}>
-                <a>
+                <NavLink to='/'>
                   <FaSignOutAlt />
                   Logout
-                </a>
+                </NavLink>
               </li>
             </>
           ) : null}
