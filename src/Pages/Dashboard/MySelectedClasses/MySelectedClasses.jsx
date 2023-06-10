@@ -10,6 +10,7 @@ const MySelectedClasses = () => {
     console.log(select);
     const total = select.reduce((sum, item) => item.price + sum, 0)
 
+    // TODO:delete shata shata hoitacena
     const handleDelete = row => {
         Swal.fire({
             title: 'Are you sure?',
