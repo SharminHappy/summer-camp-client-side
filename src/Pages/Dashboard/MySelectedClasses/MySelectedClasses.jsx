@@ -53,7 +53,7 @@ const MySelectedClasses = () => {
             <div className="flex justify-evenly h-[60px] uppercase my-10  ">
                 <h1 className="text-2xl">Total Selected:{select.length}</h1>
                 <h1 className="text-2xl">Total Price:{total}</h1>
-                <button className="btn btn-outline btn-warning btn-sm">pay</button>
+                
             </div>
             <div className="overflow-x-auto  w-full">
                 <table className="table ">
@@ -69,6 +69,7 @@ const MySelectedClasses = () => {
                             <th>Class Name</th>
                             <th>Instructor Name</th>
                             <th>Price</th>
+                            <th>Action</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -103,6 +104,9 @@ const MySelectedClasses = () => {
                                 <td>{row.price}</td>
                                 <td>
                                     <button onClick={() => handleDelete(row)} className="btn btn-ghost bg-red-600 btn-md"><FaTrashAlt className="text-white"></FaTrashAlt></button>
+                                </td>
+                                <td>
+                                <button className="btn btn-outline btn-warning btn-sm">pay</button>
                                 </td>
                             </tr>)
                         }

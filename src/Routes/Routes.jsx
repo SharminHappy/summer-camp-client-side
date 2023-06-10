@@ -41,29 +41,22 @@ export const router = createBrowserRouter([
       {
         path: 'classes',
         element: <Classes></Classes>,
-        loader: async () => {
-          try {
-            const response = await fetch('http://localhost:5000/classes');
-            const data = await response.json();
-            return data;
-          } catch (error) {
-            console.log(error.message);
-          }
-        }
-
 
       },
-      {
-        path: 'login',
-        element: <Login></Login>
-      },
-      {
-        path: 'registration',
-        element: <Registration></Registration>
-      },
+      
+      
 
     ]
   },
+  {
+    path: 'login',
+    element: <Login></Login>
+  },
+  {
+    path: 'registration',
+    element: <Registration></Registration>
+  },
+
   {
     path: 'dashboard',
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
@@ -73,8 +66,8 @@ export const router = createBrowserRouter([
         element: <MySelectedClasses></MySelectedClasses>
       },
       {
-        path:'manageusers',
-        element:<ManageUsers></ManageUsers>
+        path: 'manageusers',
+        element: <ManageUsers></ManageUsers>
       }
     ]
   }

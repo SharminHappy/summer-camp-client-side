@@ -1,12 +1,21 @@
 import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
 import ClassesCard from "./ClassesCard";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
+import { useEffect, useState } from "react";
 
 // Todo:impement pagination here
 
 const Classes = () => {
-    const loadedClaData = useLoaderData();
+    const [cardData, setCardData] = useState([]);
+    useEffect(() => {
+        // Fetch data from the server and update the cardData state
+        fetch('http://localhost:5000/classes')
+            .then((response) => response.json())
+            .then((data) => setCardData(data));
+    }, []);
+
+
+
 
     return (
         <div>
@@ -14,16 +23,14 @@ const Classes = () => {
                 <title>SPSC@MP | Classes</title>
             </Helmet>
             <SectionTitle
-            heading={'All Classes information'}
+                heading={'All Classes information'}
             ></SectionTitle>
-            <div className='grid grid-cols-3 gap-3'>
+            <div className='grid grid-cols-3 my-10 gap-3'>
                 {
-                    loadedClaData.map(data => <ClassesCard
+                    cardData?.map(data=> <ClassesCard
                         key={data._id}
                         data={data}
-                    >
-                    </ClassesCard>
-                    )
+                    ></ClassesCard>)
                 }
             </div>
         </div>

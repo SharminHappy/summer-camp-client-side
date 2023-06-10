@@ -5,6 +5,7 @@ import { useContext, useState } from 'react';
 import { FaAddressBook, FaCaretLeft, FaFootballBall, FaHome, FaSignOutAlt, FaWallet } from "react-icons/fa";
 import useSelect from "../hooks/useSelect";
 import { AuthContext } from "../providers/AuthProvider";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
 
@@ -13,9 +14,11 @@ const Dashboard = () => {
     const { logOut } = useContext(AuthContext);
 
     // TODO:load data from the server to have dynamic isAdmin based on  data
-    const isAdmin = true;
+    // const isAdmin = true;
     // const isInstructor = true;
     // const isUser = true;
+
+    const [isAdmin]=useAdmin();
     const handleLogOut = () => {
 
         logOut()

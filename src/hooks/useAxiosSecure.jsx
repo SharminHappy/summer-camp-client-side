@@ -4,9 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 
 
-
-
-
 const useAxiosSecure = () => {
     const { logOut } = useContext(AuthContext);
 
@@ -34,17 +31,15 @@ const useAxiosSecure = () => {
 
         axiosSecure.interceptors.response.use(
             (response) => {
-                return response;
+                response;
             },
-            (error) => {
+            async(error) => {
                 if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-                    logOut()
+                    await logOut()
                         .then(() => {
                             navigate('/login');
                         })
-                        .catch((logoutError) => {
-                            console.error('Logout error:', logoutError);
-                        });
+                       
                 }
                 return Promise.reject(error);
             }
