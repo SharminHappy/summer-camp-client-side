@@ -9,16 +9,18 @@ import PopularInstructors from "./PopularInstructors/PopularInstructors";
 
 const Home = () => {
     return (
-            <div>
-                {/* <Helmet>
-                    <title>SPSC@MP | Home</title>
-                </Helmet> */}
+       
+        <div >
+            <Helmet>
+                <title>SPSC@MP | Home</title>
+            </Helmet>
             <Slider></Slider>
             <PopularClasses></PopularClasses>
             <PopularInstructors></PopularInstructors>
 
 
         </div>
+        
     );
 };
 

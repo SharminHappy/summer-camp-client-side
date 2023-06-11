@@ -1,15 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-import { FaShoppingCart } from 'react-icons/fa';
-import useSelect from "../../../hooks/useSelect";
+// import { FaShoppingCart } from 'react-icons/fa';
+// import useSelect from "../../../hooks/useSelect";
+import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
+    // here change
+    const [theme, setTheme] = useState('light');
 
-    const [select] = useSelect();
+    // const [select,setSelect] = useSelect();
 
     const handleLogOut = () => {
 
@@ -20,6 +23,19 @@ const Navbar = () => {
             })
 
     }
+
+    useEffect(() => {
+        document.querySelector('html').setAttribute('data-theme', theme);
+    }, [theme]);
+    const toggleTheme = () => {
+        const newTheme = theme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+    };
+
+
+
+
+
 
     const navOptions = <>
 
@@ -43,6 +59,13 @@ const Navbar = () => {
                 </button>
             </Link>
         </li>
+        <li>
+            <label className="swap swap-rotate">
+                <input onClick={toggleTheme} type="checkbox" />
+                <div className="swap-off"><MdOutlineLightMode className="text-2xl"></MdOutlineLightMode></div>
+                <div className="swap-on"><MdDarkMode className="text-2xl"></MdDarkMode></div>
+            </label>
+        </li>
 
         {
             user ?
@@ -60,6 +83,7 @@ const Navbar = () => {
 
     </>
     return (
+
         <div className="navbar fixed z-10  bg-opacity-40 max-w-screen-xl bg-cyan-700 text-white  uppercase rounded-b ">
             <div className="navbar-start">
                 <div className="dropdown">
@@ -79,6 +103,7 @@ const Navbar = () => {
             </div>
 
         </div>
+
     );
 };
 

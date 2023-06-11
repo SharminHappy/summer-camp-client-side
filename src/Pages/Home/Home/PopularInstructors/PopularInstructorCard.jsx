@@ -3,6 +3,7 @@
 const PopularInstructorCard = ({ pInstructor }) => {
     const { image, instructorName } = pInstructor;
     return (
+
         <div className="mb-4">
             <div className="card w-96 bg-base-100 shadow-xl">
                 <figure><img src={image} alt="Shoes" /></figure>
@@ -14,6 +15,7 @@ const PopularInstructorCard = ({ pInstructor }) => {
                 </div>
             </div>
         </div>
+
     );
 };
 

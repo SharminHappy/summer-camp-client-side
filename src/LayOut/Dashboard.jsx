@@ -45,11 +45,12 @@ const Dashboard = () => {
   };
 
   return (
+    // TODO:i do not want to fixed in full dashboard
     <div className="flex h-screen">
       {/* Sidebar */}
       {/* here i want to side bar also scroll or  move with main content */}
       <div
-        className={`w-80 bg-gray-800 text-white mb-0 pb-0 h-screen overflow-y-auto   ${isDrawerOpen ? 'translate-x-0 ' : '-translate-x-full fixed  '
+        className={`w-80 bg-gray-800 text-white mb-0 pb-0 h-screen overflow-y-auto   ${isDrawerOpen ? 'translate-x-0  ' : '-translate-x-full'
           } transition-transform duration-300 ease-in-out`}
       >
         <a className="btn btn-ghost normal-case text-xl ml-8  pt-5">
@@ -114,7 +115,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="w-64 ml-4">
-                <NavLink to="/dashboard/myclass">
+                <NavLink to="/dashboard/myclasses">
                   <FaUser />
                   My Class
                 </NavLink>

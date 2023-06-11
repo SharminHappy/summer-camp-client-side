@@ -14,7 +14,9 @@ const PopularInstructors = () => {
             })
     }, [])
     return (
-        <div>
+        
+        
+        <div >
             <SectionTitle
                 heading={'Popular Instructors'}
             ></SectionTitle>
@@ -27,6 +29,7 @@ const PopularInstructors = () => {
                 }
             </div>
         </div>
+       
     );
 };
 
