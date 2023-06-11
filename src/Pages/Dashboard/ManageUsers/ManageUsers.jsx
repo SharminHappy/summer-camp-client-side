@@ -1,19 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaUserShield } from "react-icons/fa";
+
 import { GrUserAdmin } from "react-icons/gr";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../hooks/useAxiosSecure"
+
+
 
 const ManageUsers = () => {
-    // here
 
-    const [axiosSecure] = useAxiosSecure()
+    const [axiosSecure] = useAxiosSecure();
+
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await axiosSecure.get('/users')
         return res.data;
     })
+
+
 
     const handleMakeAdmin = user => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
@@ -65,23 +70,24 @@ const ManageUsers = () => {
 
 
     return (
-        <div className="w-full  ml-2">
+        <div className="w-full  ml-2 mt-2">
             <Helmet>
                 <title>SPSC@MP | Manage Users</title>
             </Helmet>
-            <h3 className="text-3xl font-semibold my-4">Total users:{users.length}</h3>
             <div className="overflow-x-auto ">
                 <table className="table w-full ">
                     {/* head */}
-                    <thead className=" bg-gray-800  text-white">
+                    <thead className=" bg-gray-800 font-bold  text-white">
                         <tr>
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Action</th>
+                            <th>Role</th>
+                            <th>Make Admin</th>
+                            <th>Make Instructor</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="font-semibold">
                         {
                             users.map((user, index) => <tr
                                 key={user._id}
@@ -89,13 +95,15 @@ const ManageUsers = () => {
                                 <th>{index + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td className=" flex gap-2 text-end ">
+                                <td>{user.role}</td>
+                                <td className="text-end" >
                                     {
                                         user.role === 'admin' ? 'admin' :
                                             <button onClick={() => handleMakeAdmin(user)} className="btn bg-orange-800 btn-sm"><FaUserShield className="text-white"></FaUserShield></button>
 
                                     }
-
+                                </td>
+                                <td className="text-end">
                                     {
                                         user.role === 'instructor' ? 'instructor' : <button onClick={() => handleMakeInstructor(user)} className="btn  btn-ghost  bg-yellow-500 btn-sm"><GrUserAdmin></GrUserAdmin></button>
                                     }
@@ -106,6 +114,7 @@ const ManageUsers = () => {
 
                     </tbody>
                 </table>
+
             </div>
         </div>
     );

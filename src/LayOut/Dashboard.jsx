@@ -18,9 +18,10 @@ import useInstructor from '../hooks/useInstructor';
 import useStudent from '../hooks/useStudent';
 
 const Dashboard = () => {
+
   const [select] = useSelect();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   // TODO: Load data from the server to have dynamic isAdmin based on data
   // const isAdmin = true;
@@ -50,51 +51,44 @@ const Dashboard = () => {
       {/* Sidebar */}
       {/* here i want to side bar also scroll or  move with main content */}
       <div
-        className={`w-80 bg-gray-800 text-white mb-0 pb-0 h-screen overflow-y-auto   ${isDrawerOpen ? 'translate-x-0  ' : '-translate-x-full'
+        className={` w-64 bg-gray-800 text-white mb-0 pb-0 h-screen overflow-y-auto   ${isDrawerOpen ? 'translate-x-0  ' : '-translate-x-full'
           } transition-transform duration-300 ease-in-out`}
       >
-        <a className="btn btn-ghost normal-case text-xl ml-8  pt-5">
-          <span className="font-bold text-cyan-950 text-4xl uppercase">sps</span>
-          <span className="font-bold text-4xl text-yellow-700 uppercase">
-            c<span className=" font-bold text-cyan-950 text-4xl uppercase">@</span>mp
-          </span>
-        </a>
+        <img className='rounded-full h-32 mx-auto' src={user.photoURL} alt="" />
         <ul className="menu p-4 my-5 text-white uppercase gap-3 justify-center">
           {isAdmin ? (
             <>
-              <li className="w-64 ml-4">
-                <NavLink to="/dashboard/home">
-                  <FaHome />
-                  Admin Home
-                </NavLink>
+              <li className=" w-52 text-center ">
+                 {user.displayName}
+
               </li>
-              <li className="w-64 ml-4">
+              <li className="w-52 ">
                 <NavLink to="/dashboard/manageclasses">
                   <MdSportsCricket />
                   Manage Classes
                 </NavLink>
               </li>
-              <li className="w-64 ml-4">
+              <li className="w-52 ">
                 <NavLink to="/dashboard/manageusers">
                   <LuUsers />
                   Manage Users
                 </NavLink>
               </li>
-              <div className="divider h-1 w-60 ml-2 rounded-lg bg-yellow-500"></div>
-              <li className="w-64 ml-4">
+              <div className="divider h-1 w-52  rounded-lg bg-yellow-500"></div>
+              <li className="w-52 ">
                 <NavLink to="/">
                   <FaHome />
                   Home
                 </NavLink>
               </li>
-              <li className="w-64 ml-4">
+              <li className="w-52">
                 <NavLink to="/classes">
                   <FaFootballBall />
                   Classes
                 </NavLink>
               </li>
-              <li className="w-64 ml-4" onClick={handleLogOut}>
-              <NavLink to='/'>
+              <li className="w-52" onClick={handleLogOut}>
+                <NavLink to='/'>
                   <FaSignOutAlt />
                   Logout
                 </NavLink>
@@ -102,32 +96,30 @@ const Dashboard = () => {
             </>
           ) : isInstructor ? (
             <>
-              <li className="w-64 ml-4">
-                <NavLink to="/dashboard/instructor">
-                  <FaHome />
-                  Instructor Home
-                </NavLink>
+              <li className=" w-52 text-center">
+                Instructor: {user.displayName}
+
               </li>
-              <li className="w-64 ml-4">
+              <li className="w-52 ">
                 <NavLink to="/dashboard/addclass">
                   <MdSportsCricket />
                   Add a Class
                 </NavLink>
               </li>
-              <li className="w-64 ml-4">
+              <li className="w-52 ">
                 <NavLink to="/dashboard/myclasses">
                   <FaUser />
                   My Class
                 </NavLink>
               </li>
-              <div className="divider h-1 w-60 ml-2 rounded-lg bg-yellow-500"></div>
-              <li className="w-64 ml-4">
+              <div className="divider h-1 w-60  rounded-lg bg-yellow-500"></div>
+              <li className="w-52 ">
                 <NavLink to="/">
                   <FaHome />
                   Home
                 </NavLink>
               </li>
-              <li className="w-64 ml-4" onClick={handleLogOut}>
+              <li className="w-52 " onClick={handleLogOut}>
                 <NavLink to='/'>
                   <FaSignOutAlt />
                   Logout
@@ -136,45 +128,43 @@ const Dashboard = () => {
             </>
           ) : isStudent ? (
             <>
-              <li className="w-64 ml-4">
-                <NavLink to="/dashboard/home">
-                  <FaHome />
-                  Student Home
-                </NavLink>
+              <li className=" w-52 text-center ">
+                {user.displayName}
+
               </li>
-              <li className="w-64 ml-4">
+              <li className="w-52 ">
                 <NavLink to="/dashboard/myselectedclasses">
                   <FaFootballBall />
                   My Selected Classes
                   <span className="badge bg-yellow-500 text-white">+{select?.length || 0}</span>
                 </NavLink>
               </li>
-              <li className="w-64 ml-4">
+              <li className="w-52 ">
                 <NavLink to="/dashboard/enroll">
                   <FaAddressBook />
                   My Enrolled Classes
                 </NavLink>
               </li>
-              <li className="w-64 ml-4">
+              <li className="w-52 ">
                 <NavLink to="/dashboard/history">
                   <FaWallet />
                   Payment History
                 </NavLink>
               </li>
-              <div className="divider h-1 w-60 ml-2 rounded-lg bg-yellow-500"></div>
-              <li className="w-64 ml-4">
+              <div className="divider h-1 w-52 rounded-lg bg-yellow-500"></div>
+              <li className="w-52 ">
                 <NavLink to="/">
                   <FaHome />
                   Home
                 </NavLink>
               </li>
-              <li className="w-64 ml-4">
+              <li className="w-52 ">
                 <NavLink to="/classes">
                   <FaFootballBall />
                   Classes
                 </NavLink>
               </li>
-              <li className="w-64 ml-4" onClick={handleLogOut}>
+              <li className="w-52 " onClick={handleLogOut}>
                 <NavLink to='/'>
                   <FaSignOutAlt />
                   Logout

@@ -7,10 +7,10 @@ import useAxiosSecure from './useAxiosSecure';
 const useSelect = () => {
 
     const { user, loading } = useContext(AuthContext);
-   
+    // const token = localStorage.getItem('Access_Token');
 
     const [axiosSecure] = useAxiosSecure();
-    
+    // TODO:slove why response.data undefined
 
     const { refetch, data: select = [] } = useQuery({
         queryKey: ['selects', user?.email],

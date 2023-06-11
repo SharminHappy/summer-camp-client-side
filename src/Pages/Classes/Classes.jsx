@@ -14,8 +14,11 @@ const Classes = () => {
             .then((data) => setCardData(data));
     }, []);
 
+    // TODO Approve load data from ther to have dynamic isapprove based on data
 
+    const isApprove = true;
 
+    // is Admin taw kora try korbo
 
     return (
         <div>
@@ -25,14 +28,19 @@ const Classes = () => {
             <SectionTitle
                 heading={'All Classes information'}
             ></SectionTitle>
-            <div className='grid grid-cols-3 my-10 gap-3'>
-                {
-                    cardData?.map(data=> <ClassesCard
-                        key={data._id}
-                        data={data}
-                    ></ClassesCard>)
-                }
-            </div>
+            {
+                isApprove ? <>
+                    <div className='grid grid-cols-3 my-10 gap-3'>
+                        {
+                            cardData?.map(data => <ClassesCard
+                                key={data._id}
+                                data={data}
+                            ></ClassesCard>)
+                        }
+                    </div>
+                </>:
+                <></>
+            }
         </div>
     );
 };

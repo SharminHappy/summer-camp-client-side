@@ -1,35 +1,35 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import Modal from "./Modal";
+// import Modal from "./Modal";
 
 const AllInstructorsCard = ({ data }) => {
-    const [isModalOpen, setModalOpen] = useState(false);
+    // const [isModalOpen, setModalOpen] = useState(false);
 
     const handleButtonClick = () => {
-        setModalOpen(true);
+        // setModalOpen(true);
     };
 
-    const closeModal = () => {
-        setModalOpen(false);
-    };
+    // const closeModal = () => {
+    //     setModalOpen(false);
+    // };
 
     const { user } = useContext(AuthContext)
 
-    const [modal, setModal] = useState(false);
-    // const [tempdata, setTempdata] = useState([]);
-    // // const [showModal,setShowModal] = useState(false);
+    // const [modal, setModal] = useState(false);
+    const [tempdata, setTempdata] = useState([]);
+    // const [showModal,setShowModal] = useState(false);
 
     const { instructorName, image } = data;
 
-    // const getData = (instructorName, image) => {
-    //     const tempData = [instructorName, image];
-    //     console.log(tempData);
-    //     setTempdata(item => [1, ...tempData])
+    const getData = (instructorName, image) => {
+        const tempData = [instructorName, image];
+        console.log(tempData);
+        setTempdata(item => [1, ...tempData])
 
-    //     return setModal(true);
+        // return setModal(true);
 
 
-    // }
+    }
     return (
         <>
 
@@ -42,15 +42,15 @@ const AllInstructorsCard = ({ data }) => {
                         <h2 className="card-title text-2xl font-bold text-cyan-950">{instructorName}</h2>
                         <div className="card-actions">
 
-                            <a onClick={handleButtonClick} className="btn bg-yellow-500  w-60 uppercase">open modal</a>
+                     <a onClick={handleButtonClick} className="btn bg-yellow-500  w-60 uppercase">open modal</a>
 
                         </div>
                     </div>
                 </div>
             </section>
-
-            <Modal isOpen={isModalOpen} data={data} onClose={closeModal} />
-
+           
+                {/* <Modal isOpen={isModalOpen} onClose={closeModal} /> */}
+        
 
         </>
     );

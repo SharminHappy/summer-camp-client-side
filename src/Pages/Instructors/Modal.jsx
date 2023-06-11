@@ -1,6 +1,6 @@
 
 
-const Modal = ({ isOpen, onClose,data }) => {
+const Modal = ({ isOpen, onClose }) => {
   return (
     // Your modal content here
     <div className={`modal ${isOpen ? 'open' : ''}`}>
