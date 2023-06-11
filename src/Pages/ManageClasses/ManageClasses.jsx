@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-// import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-// import { AuthContext } from "../../providers/AuthProvider";
-// import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-// import { useState } from "react";
+import { useState } from "react";
+import Modal from "react-modal";
+
 
 const ManageClasses = () => {
 
-
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [feedbackText, setFeedbackText] = useState("");
 
 
 
@@ -63,6 +63,25 @@ const ManageClasses = () => {
 
 
     }
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setFeedbackText(""); // Clear the text field value
+    };
+
+    const handleSubmitFeedback = () => {
+        // Logic to send feedback to the other user
+        // You can use the feedbackText state variable to access the entered text
+        console.log(feedbackText);
+
+        // Close the modal after submitting
+        closeModal();
+    };
+
+
 
 
 
@@ -121,24 +140,48 @@ const ManageClasses = () => {
                                 </td>
                                 <td >
                                     {
-                                        pendingclass.status === 'deny' ? 'deny':
-                                            <button onClick={() => handleDeny(pendingclass)}  className="btn text-white bg-orange-800 btn-sm">Deny</button>
+                                        pendingclass.status === 'deny' ? 'deny' :
+                                            <button onClick={() => handleDeny(pendingclass)} className="btn text-white bg-orange-800 btn-sm">Deny</button>
 
                                     }
                                 </td>
+
+
                                 <td>
-
-                                    <button className="btn bg-orange-800 text-white btn-sm">Send FeedBack</button>
-
-
+                                    <button onClick={openModal} className="btn bg-orange-800 text-white btn-sm">
+                                        Send Feedback
+                                    </button>
                                 </td>
+
+
+
                             </tr>)
                         }
 
                     </tbody>
                 </table>
+                <Modal
+                    isOpen={isModalOpen}
+                    onRequestClose={closeModal}
+                    contentLabel="Send Feedback Modal"
+                
+                    
+                >
+                    <h2 className=" text-yellow-500 font-semibold text-2xl my-10 ">Send Feedback</h2>
+                    <textarea
+                        value={feedbackText}
+                        onChange={(e) => setFeedbackText(e.target.value)}
+                        placeholder="Enter your feedback here"
+                        className=" w-1/2 h-1/2 mr-5  border-4 border-yellow-500"
+                    ></textarea>
+                    <button onClick={handleSubmitFeedback} className="btn btn-sm bg-success mr-3 text-white">Send</button>
+
+                    <button onClick={closeModal} className="btn btn-sm bg-red-700 text-white">Cancel</button>
+                </Modal>
             </div>
         </div>
+
+
     );
 };
 
