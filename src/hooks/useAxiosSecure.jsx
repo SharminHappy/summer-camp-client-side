@@ -5,7 +5,7 @@ import axios from 'axios';
 
 // here
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://summer-camp-server-side-phi.vercel.app',
 });
 
 const useAxiosSecure = () => {

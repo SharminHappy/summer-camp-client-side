@@ -9,7 +9,7 @@ const Instructors = () => {
     const [cardData, setCardData] = useState([]);
     useEffect(() => {
         // Fetch data from the server and update the cardData state
-        fetch('http://localhost:5000/instructors')
+        fetch('https://summer-camp-server-side-phi.vercel.app/instructors')
             .then((response) => response.json())
             .then((data) => setCardData(data));
     }, []);

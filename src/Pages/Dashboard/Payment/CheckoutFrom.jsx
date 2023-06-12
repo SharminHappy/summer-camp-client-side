@@ -34,6 +34,8 @@ const CheckoutFrom = ({ price, item, select }) => {
 
     }, [currentPrice, user])
 
+    console.log(item.classId);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!stripe || !elements) {
@@ -78,6 +80,9 @@ const CheckoutFrom = ({ price, item, select }) => {
         if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
             const updatedSeats = item.available_seats - 1;
+            axiosSecure.patch(`/classes/${item.classId}`)
+            .then(res=>console.log(res))
+
 
 
 

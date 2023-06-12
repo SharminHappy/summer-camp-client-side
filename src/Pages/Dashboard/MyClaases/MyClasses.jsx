@@ -7,7 +7,7 @@ const MyClasses = () => {
 
     const handleUpdate = id => {
 
-        fetch(`http://localhost:5000/classes/${id}`,{
+        fetch(`https://summer-camp-server-side-phi.vercel.app/classes/${id}`,{
             method:'PATCH',
             headers:{
                 'content-type':'application/json'

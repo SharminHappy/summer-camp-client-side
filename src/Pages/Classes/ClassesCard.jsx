@@ -19,7 +19,7 @@ const ClassesCard = ({ data }) => {
 
         if (user && user.email) {
             const selectClass = { classId: _id, image, class_name, instructor_name, available_seats, price, enrollment, email: user.email }
-            fetch('http://localhost:5000/selects', {
+            fetch('https://summer-camp-server-side-phi.vercel.app/selects', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

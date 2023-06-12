@@ -1,14 +1,13 @@
 [
     {
-        "_id":"60bb785f56a2781e78b7f4a1",
+        "_id": "60bb785f56a2781e78b7f4a1",
         "image": "https://i.ibb.co/0s7zLFd/close-up-kids-playing-basketball-23-2149214016.jpg",
         "class_name": "Basketball",
         "instructor_name": "John Smith",
-        "about":"It is a fast-paced sport played between two teams. To score points, players shoot a ball through high hoops, which are located at either end of the court. Players move the ball around the court by throwing, or passing, it to a teammate.",
+        "about": "It is a fast-paced sport played between two teams. To score points, players shoot a ball through high hoops, which are located at either end of the court. Players move the ball around the court by throwing, or passing, it to a teammate.",
         "available_seats": 20,
         "price": 100,
         "enrollment": 15
-
     },
     {
         "_id": "60bb785f56a2781e78b7f4a2",
@@ -20,7 +19,7 @@
         "enrollment": 10
     },
     {
-        "_id":"60bb785f56a2781e78b7f4a3",
+        "_id": "60bb785f56a2781e78b7f4a3",
         "image": "https://i.ibb.co/K57bgy6/group-boys-girls-train-learn-swim-pool-with-instructor-199620-11812.jpg",
         "class_name": "Swimming",
         "instructor_name": "Michael Brown",

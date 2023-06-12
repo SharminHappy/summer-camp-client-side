@@ -16,13 +16,13 @@ const ManageClasses = () => {
     const [axiosSecure] = useAxiosSecure();
 
     const { data: classes = [], refetch } = useQuery(['classes'], async () => {
-        const res = await axiosSecure.get('http://localhost:5000/classes')
+        const res = await axiosSecure.get('https://summer-camp-server-side-phi.vercel.app/classes')
         return res.data;
     })
 
 
     const handleApprove = (pendingclass) => {
-        fetch(`http://localhost:5000/classes/approve/${pendingclass._id}`, {
+        fetch(`https://summer-camp-server-side-phi.vercel.app/classes/approve/${pendingclass._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -43,7 +43,7 @@ const ManageClasses = () => {
 
     }
     const handleDeny = (pendingclass) => {
-        fetch(`http://localhost:5000/classes/deny/${pendingclass._id}`, {
+        fetch(`https://summer-camp-server-side-phi.vercel.app/classes/deny/${pendingclass._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

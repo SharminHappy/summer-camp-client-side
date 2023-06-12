@@ -10,7 +10,7 @@ const useClasses = () => {
         queryKey: ['classes'],
         // enabled: !loading && !!user?.email && !!localStorage.getItem('Access_Token'),
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/classes')
+            const res = await fetch('https://summer-camp-server-side-phi.vercel.app/classes')
             console.log('res fetch', res)
             return res.json();
 
