@@ -6,12 +6,14 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 const PopularClasses = () => {
 
     const [pClasses, setPClasses] = useState([]);
-    const [sort, setSort] = useState();
+    // const [sort, setSort] = useState();
     // const [unsort, setUnsort] = useState();
     // const [view, setView] = useState();
     // const [flag, setFlag] = useState(0);
 
-
+    // .sort((a, b) => {
+    //     return b.enrollment - a.enrollment;
+    // })
     useEffect(() => {
         fetch('http://localhost:5000/classes')
             .then(res => res.json())
@@ -46,9 +48,7 @@ const PopularClasses = () => {
             <div className="grid lg:grid-cols-3 justify-center items-center gap-3 ">
                 {
 
-                    pClasses.sort((a, b) => {
-                        return b.enrollment - a.enrollment;
-                    }).map(pClass => <PopularClassCard
+                    pClasses.map(pClass => <PopularClassCard
                         key={pClass._id}
                         pClass={pClass}
                     ></PopularClassCard>)

@@ -3,6 +3,7 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useSelect from "../../../hooks/useSelect";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const MySelectedClasses = () => {
@@ -103,7 +104,7 @@ const MySelectedClasses = () => {
                                 </td>
                                 <td>{row.price}</td>
                                 <td>
-                                <button className="btn btn-outline btn-warning btn-sm">pay</button>
+                                    <Link to={`/dashboard/payment/${row._id}`}> <button className="btn btn-outline btn-warning btn-sm">pay</button></Link>
                                 </td>
                                 <td>
                                     <button onClick={() => handleDelete(row)} className="btn btn-ghost bg-red-600 btn-md"><FaTrashAlt className="text-white"></FaTrashAlt></button>
