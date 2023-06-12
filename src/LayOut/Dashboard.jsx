@@ -107,12 +107,12 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="w-52 ">
-                <NavLink to="/dashboard/myclasses">
+                <NavLink to="/dashboard/myclass">
                   <FaUser />
                   My Class
                 </NavLink>
               </li>
-              <div className="divider h-1 w-60  rounded-lg bg-yellow-500"></div>
+              <div className="divider h-1 w-52  rounded-lg bg-yellow-500"></div>
               <li className="w-52 ">
                 <NavLink to="/">
                   <FaHome />

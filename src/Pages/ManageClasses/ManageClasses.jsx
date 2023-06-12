@@ -53,7 +53,7 @@ const ManageClasses = () => {
                     refetch();
                     Swal.fire({
                         position: 'center',
-                        icon: 'danger',
+                        icon: 'warning',
                         title: `${pendingclass.class_name} is Deny now`,
                         showConfirmButton: false,
                         timer: 1500
@@ -180,7 +180,7 @@ const ManageClasses = () => {
                 </Modal>
             </div>
         </div>
-
+// send feedback 
 
     );
 };

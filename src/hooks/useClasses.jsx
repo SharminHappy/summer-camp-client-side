@@ -1,28 +1,28 @@
 import { useQuery } from '@tanstack/react-query'
-import { useContext } from 'react';
-import { AuthContext } from '../providers/AuthProvider';
-import useAxiosSecure from './useAxiosSecure';
+// import { useContext } from 'react';
+// import { AuthContext } from '../providers/AuthProvider';
+// import useAxiosSecure from './useAxiosSecure';
 
 
 const useClasses = () => {
 
-    const { user, loading } = useContext(AuthContext);
+    // const { user } = useContext(AuthContext);
     // const token = localStorage.getItem('Access_Token');
 
-    const [axiosSecure] = useAxiosSecure();
+    // const [axiosSecure] = useAxiosSecure();
     // TODO:slove why response.data undefined
 
-    const { refetch, data: classes = [] } = useQuery({
-        queryKey: ['classes', user?.email],
-        enabled: !loading && !!user?.email && !!localStorage.getItem('Access_Token'),
+    const { isLoading: loading, data: classes = [], refetch } = useQuery({
+        queryKey: ['classes'],
+        // enabled: !loading && !!user?.email && !!localStorage.getItem('Access_Token'),
         queryFn: async () => {
-            const res = await axiosSecure(`/classes/?email=${user.email}`)
-            console.log('res from axios', res)
-           return res.data;
-           
+            const res = await fetch('http://localhost:5000/classes')
+            console.log('res fetch', res)
+            return res.json();
+
         },
     })
-    return [classes, refetch]
+    return [classes, loading, refetch]
 
 };
 
