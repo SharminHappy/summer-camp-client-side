@@ -18,6 +18,9 @@ import StudentRoute from "./StudentRoute";
 import ManageClasses from "../Pages/ManageClasses/ManageClasses";
 import MyClasses from "../Pages/Dashboard/MyClaases/MyClasses";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import MyEnrolledClasses from "../Pages/Dashboard/MyEnrolledClasses/MyEnrolledClasses";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import Error from "../Pages/Error";
 
 
 
@@ -35,15 +38,15 @@ export const router = createBrowserRouter([
       {
         path: 'instructors',
         element: <PrivateRoute><Instructors></Instructors></PrivateRoute>,
-       
+
       },
       {
         path: 'classes',
         element: <PrivateRoute><Classes></Classes></PrivateRoute>,
 
       },
-      
-      
+
+
 
     ]
   },
@@ -65,29 +68,43 @@ export const router = createBrowserRouter([
         element: <StudentRoute><MySelectedClasses></MySelectedClasses></StudentRoute>
       },
       {
+        path: 'enroll',
+        element: <StudentRoute><MyEnrolledClasses></MyEnrolledClasses></StudentRoute>
 
-        path:'payment/:id',
-        element:<StudentRoute><Payment></Payment></StudentRoute>
+      },
+      {
+        path: 'history',
+        element: <StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
+
+      },
+      {
+
+        path: 'payment/:id',
+        element: <StudentRoute><Payment></Payment></StudentRoute>
       },
       {
         path: 'manageusers',
         element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
       },
       {
-        path:'manageclasses',
-        element:<AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+        path: 'manageclasses',
+        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
       },
       {
-        path:'addclass',
-        element:<InstructorRoute><AddClass></AddClass></InstructorRoute>
+        path: 'addclass',
+        element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
 
       },
       {
-        path:'myclass',
-        element:<InstructorRoute><MyClasses></MyClasses></InstructorRoute>
+        path: 'myclass',
+        element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
       }
-     
+
     ]
+  },
+  {
+    path: '*',
+    element: <Error></Error>
   }
 
 ]);

@@ -143,15 +143,18 @@ const ManageClasses = () => {
                                         pendingclass.status === 'deny' ? 'deny' :
                                             <button onClick={() => handleDeny(pendingclass)} className="btn text-white bg-orange-800 btn-sm">Deny</button>
 
+
                                     }
                                 </td>
-
-
+                                {/* TODO:Condition */}
                                 <td>
                                     <button onClick={openModal} className="btn bg-orange-800 text-white btn-sm">
                                         Send Feedback
                                     </button>
                                 </td>
+
+
+
 
 
 
@@ -164,8 +167,8 @@ const ManageClasses = () => {
                     isOpen={isModalOpen}
                     onRequestClose={closeModal}
                     contentLabel="Send Feedback Modal"
-                
-                    
+
+
                 >
                     <h2 className=" text-yellow-500 font-semibold text-2xl my-10 ">Send Feedback</h2>
                     <textarea
@@ -180,7 +183,7 @@ const ManageClasses = () => {
                 </Modal>
             </div>
         </div>
-// send feedback 
+        // send feedback 
 
     );
 };

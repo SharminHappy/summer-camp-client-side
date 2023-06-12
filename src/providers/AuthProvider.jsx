@@ -50,19 +50,19 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             console.log('current user', currentUser);
 
-           if(currentUser){
-            axios.post('http://localhost:5000/jwt',{email:currentUser.email})
-            .then(data=>{
-                console.log(data.data.token)
-                localStorage.setItem('Access_Token',data.data.token)
-                setLoading(false);
-            })
-           }
-           else{
-            localStorage.removeItem('Access_Token')
-           }
+            if (currentUser) {
+                axios.post('http://localhost:5000/jwt', { email: currentUser.email })
+                    .then(data => {
+                        console.log(data.data.token)
+                        localStorage.setItem('Access_Token', data.data.token)
+                        setLoading(false);
+                    })
+            }
+            else {
+                localStorage.removeItem('Access_Token')
+            }
+            setLoading(false)
 
-           
         });
         return () => {
             return unsubscribe();

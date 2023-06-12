@@ -92,8 +92,9 @@ const CheckoutFrom = ({ price, item, select }) => {
                 selectItem: item._id,
                 classItem: item.classId,
                 itemName: item.class_name,
-                status: 'service pending',
+                status: 'pending',
                 availableSeats: updatedSeats,
+                image:item.image,
             }
             // console.log(payment);
             axiosSecure.post('/payments', payment)

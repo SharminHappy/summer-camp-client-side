@@ -4,6 +4,25 @@ import useClasses from "../../../hooks/useClasses";
 
 const MyClasses = () => {
     const [classes] = useClasses();
+
+    const handleUpdate = id => {
+
+        fetch(`http://localhost:5000/classes/${id}`,{
+            method:'PATCH',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify({status:'update'})
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if(data.modifiedCount>0){
+                    // 
+                }
+            })
+
+    }
     return (
         <div>
             <SectionTitle heading={'My Classes'}></SectionTitle>
@@ -25,7 +44,7 @@ const MyClasses = () => {
                             )}
 
                             <div className="card-actions justify-end">
-                                <button className="btn bg-yellow-500 text-white">Update</button>
+                                <button onClick={()=> handleUpdate(classItem._id)} className="btn bg-yellow-500 text-white">Update</button>
                             </div>
                         </div>
                     </div>)
