@@ -4,26 +4,35 @@ import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+// import { useLocation, useNavigate } from "react-router-dom";
 
-const CheckoutFrom = ({ price }) => {
+
+const CheckoutFrom = ({ price, item, select }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useContext(AuthContext);
-    const [axiosSecure] = useAxiosSecure();
+    const [axiosSecure, navigate] = useAxiosSecure();
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState("");
+    const [processing, setProcessing] = useState(false);
+    const [transactionId, setTransactionId] = useState('');
+    // const [availableSeats, setAvailableSeats] = useState(0);
+    // const navigate = useNavigate();
 
     const currentPrice = parseFloat(price);
+    const from = location.state?.from?.pathname || "/myselectedclasses";
     useEffect(() => {
         if (currentPrice > 0) {
             axiosSecure.post('/create-payment-intent', { price: currentPrice })
                 .then(data => {
-                    console.log(data.data.clientSecret)
+                    // console.log(data.data.clientSecret)
                     setClientSecret(data.data.clientSecret);
+
                 })
+
         }
 
-    }, [currentPrice,user])
+    }, [currentPrice, user])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -47,6 +56,7 @@ const CheckoutFrom = ({ price }) => {
             setCardError('');
             console.log('[paymentMethod]', paymentMethod);
         }
+        setProcessing(true);
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -62,12 +72,45 @@ const CheckoutFrom = ({ price }) => {
         if (confirmError) {
             console.log(confirmError);
         }
-        console.log(paymentIntent);
+        console.log('payment intent', paymentIntent);
+        setProcessing(false)
+
+        if (paymentIntent.status === 'succeeded') {
+            setTransactionId(paymentIntent.id);
+            const updatedSeats = item.available_seats - 1;
+
+
+
+            // save payment information to the server
+            const payment = {
+                name: user?.displayName,
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                price,
+                date: new Date(),
+                quantity: select.length,
+                selectItem: item._id,
+                classItem: item.classId,
+                itemName: item.class_name,
+                status: 'service pending',
+                availableSeats: updatedSeats,
+            }
+            // console.log(payment);
+            axiosSecure.post('/payments', payment)
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data.result.insertedId) {
+                        // navigate('/myselectedclasses', { state: { from: location } })
+                    }
+                })
+                // TODO:navigation
+               
+        }
     }
 
     return (
         <>
-            <form className="w-1/2 m-8 " onSubmit={handleSubmit}>
+            <form className="w-1/2 m-8 mx-auto " onSubmit={handleSubmit}>
                 <CardElement
                     options={{
                         style: {
@@ -84,12 +127,26 @@ const CheckoutFrom = ({ price }) => {
                         },
                     }}
                 />
-                <button className="btn btn-outline mt-5 btn-sm  btn-warning" type="submit" disabled={!stripe || !clientSecret}>
+                <button className="btn btn-outline mt-5 btn-sm  btn-warning" type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
             {
-                cardError && <p>{cardError}</p>
+                cardError && <p className=" text-red-700">{cardError}</p>
+            }
+            {
+                transactionId && (
+                    <>
+                        <p className=" text-green-500 text-center">Transaction succeeded:{transactionId}</p>
+                    </>
+
+                )
+
+
+
+
+
+
             }
         </>
     );

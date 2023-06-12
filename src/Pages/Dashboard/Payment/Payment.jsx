@@ -18,7 +18,9 @@ const Payment = () => {
     const data=select.find(i=>i._id==id)
     setItem(data);
    },[id])
-   console.log(item);
+//   console.log(item);
+//    console.log(select)
+
 
     return (
         <div key={item?._id}>
@@ -26,7 +28,7 @@ const Payment = () => {
                 heading={`Payment for ${item?.class_name}`}
             ></SectionTitle>
             <Elements stripe={stripePromise}>
-                <CheckoutFrom price={item?.price}></CheckoutFrom>
+                <CheckoutFrom item={item} select={select} price={item?.price}></CheckoutFrom>
             </Elements>
         </div>
     );

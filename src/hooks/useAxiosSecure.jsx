@@ -4,14 +4,15 @@ import { AuthContext } from '../providers/AuthProvider';
 import axios from 'axios';
 
 // here
+const axiosSecure = axios.create({
+    baseURL: 'http://localhost:5000',
+});
 
 const useAxiosSecure = () => {
     const { logOut } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const axiosSecure = axios.create({
-        baseURL: 'http://localhost:5000',
-    });
+
 
 
     useEffect(() => {
@@ -40,7 +41,7 @@ const useAxiosSecure = () => {
                 return Promise.reject(error);
             }
         );
-    }, [logOut, navigate,axiosSecure]);
+    }, [logOut, navigate]);
 
     return [axiosSecure]
 };
